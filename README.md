@@ -42,5 +42,5 @@ data = query(
 ```
 
 
-To download the pre-trained model and get more information, please go to its HuggingFace [host page](https://huggingface.co/veronica320/QA-for-Event-Extraction) 
+To download the pre-trained model and get more information, please go to the HuggingFace [host page](https://huggingface.co/veronica320/QA-for-Event-Extraction) 
 
