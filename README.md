@@ -4,7 +4,7 @@ This is a QA model as part of the event extraction system in the ACL2021 paper: 
 
 Both the backend and the frontend of the demo are saved in this repository. 
 
-In the QA-idk-demo directory, the demo can start by running:
+In the QA-idk-demo directory, the demo can start by running in terminal:
 ```
 sh run.sh 
 ```
