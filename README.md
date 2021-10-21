@@ -17,7 +17,7 @@ Then open another terminal, and send the curl request. The request consists of "
 curl -d '{"context": "My name is Sarah and I live in London.", "question": "Where do I live?"}' -H "Content-Type: application/json" -X POST http://localhost:8081/process/
 ```
 
-The results also can be acquired by taking advantage of sending query to the HuggingFace Hosted API Inference:
+The results also can be acquired by taking advantage of sending query to the Hugging Face Hosted API Inference:
 ```
 import json
 import requests
@@ -42,5 +42,5 @@ data = query(
 ```
 
 
-To download the pre-trained model and get more information, please go to the HuggingFace [host page](https://huggingface.co/veronica320/QA-for-Event-Extraction) 
+To download the pre-trained model and get more information, please go to the Hugging Face [host page](https://huggingface.co/veronica320/QA-for-Event-Extraction) 
 
