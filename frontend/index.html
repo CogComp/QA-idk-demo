@@ -1,0 +1,191 @@
+<!-- {% load static %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/demo.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Question-answering with IDK Demo</title>
+    <!-- {% csrf_token %} -->
+</head>
+<body>
+<style>
+    .loader {
+        border: 3px solid whitesmoke;
+        border-radius: 50%;
+        border-top: 3px solid black;
+        width: 40px;
+        height: 40px;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+        margin-right: auto;
+        margin-left: auto;
+        position: absolute;
+        visibility: hidden;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div class="container">
+	<!--
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">QuASE Demo</h1>
+        </div>
+    </div>
+
+    <br>
+	-->
+
+	<br>
+
+    Enter a context and a question.
+    <br>
+
+    <!--<br>
+    The context: 
+    <input id="inputA" type="text" aria-label="A" value="My name is Wolfgang and I live in Berlin." class="form-control" style="width: 100%"
+           placeholder="Input a context"> -->
+    <br>
+    The question:
+    <input id="question" type="text" aria-label="B" value="Where do I live?" class="form-control" style="width: 100%"
+           placeholder="Input a question">
+    <br>
+    The context:
+    <textarea class="form-control" id="context" rows="5" placeholder="Input a context">My name is Wolfgang and I live in Berlin. </textarea>
+    <br>
+    <br>
+    <!-- Prediction Settings:
+    <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="customradio1" value="1" name="group1"
+                {% if alg == "best" %} checked {% endif %}>
+        <label class="custom-control-label" for="customradio1">The Best Prediction</label>
+    </div>
+    <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="customradio2" value="2" name="group1"
+                {% if alg == "topn" %} checked {% endif %}>
+        <label class="custom-control-label" for="customradio2">Top N Best Prediction</label>
+    </div>
+    <br>
+
+    <br>
+    Model Selection:
+    <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="customradio3" value="3" name="group2"
+                {% if model == "conditional-semanticbert" %} checked {% endif %}>
+        <label class="custom-control-label" for="customradio3">p-QuASE</label>
+    </div>
+    <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="customradio4" value="4" name="group2"
+                {% if model == "semanticbert" %} checked {% endif %}>
+        <label class="custom-control-label" for="customradio4">s-QuASE</label>
+    </div>
+    <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="customradio5" value="5" name="group2"
+                {% if model == "bert(squad)" %} checked {% endif %}>
+        <label class="custom-control-label" for="customradio5">BERT pre-trained on SQuAD</label>
+    </div>
+    <br>
+    <br> -->
+
+    <div style="text-align: center;">
+        <!-- <button class="btn btn-outline-success" type="button" id="button-run">Run!</button> -->
+        <button class="btn btn-outline-success" type="button" id="button" 
+                onclick="javascript:return formSubmit();">Run!</button>
+        
+        <button class="btn btn-outline-danger" type="button" id="button-clean">Clean!</button>
+    </div>
+    <br>
+    
+    <!-- <div class="w3-painel">
+        &nbsp;
+        <br>
+       <div id="result" class="w3-container"></div>
+    </div> -->
+    <div style="overflow-x: scroll; overflow-y: hidden;  border: 1px solid gray;">
+
+        <div style="white-space:nowrap;">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                Answers:
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+      
+                <td scope="row" id='result'></td>
+      
+              </tr>
+      
+            </tbody>
+          </table>
+        </div>
+       </div>
+    <p id='p'></p>
+    
+<script>
+    $('#button-clean').click(function () {
+        //var x = location.href;
+        //document.getElementById("p").innerHTML = x;
+        //document.getElementById("inputA").setAttribute('value','');
+        //document.getElementById("inputB").setAttribute('value','');
+        document.getElementById('question').value = '';
+        document.getElementById('context').value = '';
+    });
+
+    function error() {
+        console.log("an error happened ... ");
+        document.getElementById("loader-main").style.visibility = "hidden";
+    }
+
+    document.getElementById("loader-main").style.visibility = "hidden";
+
+</script>
+
+<style>
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, .5);
+        -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    }
+</style>
+
+</body>
+
+</html>
