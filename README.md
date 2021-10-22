@@ -21,7 +21,7 @@ Or, you can directly get the predictions from our server by running:
 curl -d '{"context": "My name is Sarah and I live in London.", "question": "Where do I live?"}' -H "Content-Type: application/json" -X POST http://dickens.seas.upenn.edu:4005/process/
 ```
 
-The results also can be acquired by taking advantage of sending query to the Hugging Face Hosted API Inference:
+The results also can be acquired by taking advantage of sending query to the [Hugging Face Hosted API Inference]( https://api-inference.huggingface.co/docs/python/html/detailed_parameters.html#question-answering-task):
 ```
 import json
 import requests
