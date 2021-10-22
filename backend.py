@@ -263,8 +263,7 @@ class Annotation(object):
             return res# pred, score
         except:
             res = {}
-            res['error']= 'The model is loading, please try it again in a few seconds'
-            res['result'] = pred_dic
+            res['error']= pred_dic#'The model is loading, please try it again in a few seconds'
             return res
 
 
