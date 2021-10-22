@@ -250,16 +250,20 @@ class Annotation(object):
         #print(data['context'])
         #pred, score = compute_predictions_logits(data['question'], data['context']) 
         pred_dic = inference_api(data['question'], data['context'])
-        if pred_dic['score'] >= 0.1:
-            pred = pred_dic['answer']
-            score = pred_dic['score']
-        else:
-            pred = 'None'
-            score = 'The confidence score is less than 0.1.'
-        res = {}
-        res['answer']= pred
-        res['score']=score
-        return res# pred, score
+        try:
+            if pred_dic['score'] >= 0.1:
+                pred = pred_dic['answer']
+                score = pred_dic['score']
+            else:
+                pred = 'None'
+                score = 'The confidence score is less than 0.1.'
+            res = {}
+            res['answer']= pred
+            res['score']=score
+            return res# pred, score
+        except:
+            res = 'The model is loading, please try it again in few seconds'
+            return res
 
 
 ################################ Sys parameters ###############################
