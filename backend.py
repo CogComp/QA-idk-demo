@@ -258,7 +258,7 @@ class Annotation(object):
                 pred = 'None'
                 score = 'The confidence score is less than 0.1.'
             res = {}
-            res['answer']= pred
+            res['answer_test']= pred
             res['score']=score
             return res# pred, score
         except:
