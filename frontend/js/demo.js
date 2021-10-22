@@ -26,8 +26,8 @@ function outputXEL(json) {
         } else { 
             result.innerHTML += 'answer: ' + json.answer + '<br>score: '+ json.score;
         }
-    }   catch{
-           alert('The model is loading, please try it again in a few seconds')
+    }   catch(error){
+           alert('The model is loading, please try it again in a few seconds');
         }
     //result.innerHTML += 'answer: ' + json.answer + '<br>score: '+ json.score.toFixed(2)
 }
