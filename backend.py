@@ -264,7 +264,7 @@ class Annotation(object):
         except:
             res = {}
             res['error']= 'The model is loading, please try it again in a few seconds'
-            
+            res['result'] = pred_dic
             return res
 
 
