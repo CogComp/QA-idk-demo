@@ -53,12 +53,11 @@ def inference_api(question, context, API_TOKEN='api_EZDSPRblVdvrKPAPRDQMOofeHwXB
                 }
             }
         )
-        return data
 
     except:
         raise RuntimeError("{'error': 'Model veronica320/QA-for-Event-Extraction is currently loading', 'estimated_time': 56.69663964}")
 
-    
+    return data
 
 #--------------------------------- Way 2: Customized functions --------------------------------------
 
