@@ -20,14 +20,15 @@ function outputXEL(json) {
 	json_string = JSON.stringify(json)
 	console.log(json_string)
 	//result.innerHTML +=	json_string.substring(1, json_string.length - 1).replaceAll('\\"', '"')
-    try{
+    if(typeof json.score !== "undefined"){
         if (typeof json.score == "number") {
             result.innerHTML += 'answer: ' + json.answer + '<br>score: '+ json.score.toFixed(2);
         } else { 
             result.innerHTML += 'answer: ' + json.answer + '<br>score: '+ json.score;
         }
-    }   catch(error){
+     } else{
             document.getElementById("p").innerHTML = 'The model is loading, please try it again in a few seconds';
+	    result.innerHTML += 'The model is loading, please try it again in a few seconds';
         }
     //result.innerHTML += 'answer: ' + json.answer + '<br>score: '+ json.score.toFixed(2)
 }
