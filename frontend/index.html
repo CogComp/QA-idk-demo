@@ -78,11 +78,11 @@
            placeholder="Input a context"> -->
     <br>
     The question:
-    <input id="question" type="text" aria-label="B" value="Where do I live?" class="form-control" style="width: 100%"
+    <input id="question" type="text" aria-label="B" value="Who developed the model behind this demo?" class="form-control" style="width: 100%"
            placeholder="Input a question">
     <br>
     The context:
-    <textarea class="form-control" id="context" rows="5" placeholder="Input a context">My name is Wolfgang and I live in Berlin. </textarea>
+    <textarea class="form-control" id="context" rows="5" placeholder="Input a context">This question answering demo extracts the answer to a given question from a given context. If the context does not provide enough valid information for the model to answer a specific question, it will return “none” as the answer. The QA model is part of the event extraction system proposed in Lyu et al., ACL2021. It uses the pretrained architecture RoBERTa-large, and it was fine-tuned on the QAMR dataset. </textarea>
     <br>
     <br>
     <!-- Prediction Settings:
