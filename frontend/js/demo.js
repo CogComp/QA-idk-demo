@@ -29,7 +29,12 @@ function outputXEL(json) {
      } else{
             //document.getElementById("p").innerHTML = 'The model is loading, please try it again in a few seconds';
 	    //result.innerHTML += 'The model is loading, please try it again in a few seconds';
-	    alert('The model is loading, please try it again in a few seconds!');
+        if(typeof json.error !== "undefined"){
+	        alert('The model is loading, please try it again in around 10-15 seconds!');
+            }
+        else{
+            alert('Please input a question and a context!');
+            }
         }
     //result.innerHTML += 'answer: ' + json.answer + '<br>score: '+ json.score.toFixed(2)
 }
