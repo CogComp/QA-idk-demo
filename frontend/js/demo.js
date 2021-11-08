@@ -31,7 +31,7 @@ function outputXEL(json) {
 	    //result.innerHTML += 'The model is loading, please try it again in a few seconds';
         if(json.error.error.includes('loading')){
 	        alert('The model is loading, please try it again in around 10-15 seconds!');
-            alert(json.error.error);
+            //alert(json.error.error);
             console.log(json.error);
             }
         else{
