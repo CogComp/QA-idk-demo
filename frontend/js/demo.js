@@ -30,8 +30,8 @@ function outputXEL(json) {
             //document.getElementById("p").innerHTML = 'The model is loading, please try it again in a few seconds';
 	    //result.innerHTML += 'The model is loading, please try it again in a few seconds';
         if(typeof json.error !== "undefined"){
-	        alert('The model is loading, please try it again in around 10-15 seconds!');
-            console.log('json error');
+	        //alert('The model is loading, please try it again in around 10-15 seconds!');
+            alert(json.error);
             console.log(json.error);
             }
         else{
