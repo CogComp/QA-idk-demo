@@ -37,7 +37,7 @@ def inference_api(question, context, API_TOKEN='api_EZDSPRblVdvrKPAPRDQMOofeHwXB
     '''
     #API_TOKEN = 'api_EZDSPRblVdvrKPAPRDQMOofeHwXBXpyLbS'  
     #headers = {"Authorization": f"Bearer {API_TOKEN}"}
-    headers = {"Authorization": f"Bearer api_EZDSPRblVdvrKPAPRDQMOofeHwXBXpyLbS"}
+    #headers = {"Authorization": f"Bearer api_EZDSPRblVdvrKPAPRDQMOofeHwXBXpyLbS"}
     API_URL = "https://api-inference.huggingface.co/models/veronica320/QA-for-Event-Extraction"
 
     def query(payload):
