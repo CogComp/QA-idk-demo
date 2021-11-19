@@ -35,7 +35,7 @@ def inference_api(question, context, API_TOKEN='api_EZDSPRblVdvrKPAPRDQMOofeHwXB
     return a dictionary like this:
     {"score": 0.9326569437980652, "start": 11, "end": 16, "answer": "Clara"}
     '''
-    #API_TOKEN = 'api_EZDSPRblVdvrKPAPRDQMOofeHwXBXpyLbS'  
+    API_TOKEN = 'api_EZDSPRblVdvrKPAPRDQMOofeHwXBXpyLbS'  
     headers = {"Authorization": f"Bearer {API_TOKEN}"}
     API_URL = "https://api-inference.huggingface.co/models/veronica320/QA-for-Event-Extraction"
 
