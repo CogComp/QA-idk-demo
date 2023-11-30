@@ -28,7 +28,7 @@ kept for the convenience in case there is modification on the model in the futur
 '''
 
 #--------------------------------- Way 1: Hosted inference API --------------------------------------
-def inference_api(question, context, API_TOKEN='api_EZDSPRblVdvrKPAPRDQMOofeHwXBXpyLbS'):
+def inference_api(question, context, API_TOKEN='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'):
     '''
     para:
         API_TOKEN can be copied from personal HuggingFace Profile. (https://api-inference.huggingface.co/docs/python/html/quicktour.html)
